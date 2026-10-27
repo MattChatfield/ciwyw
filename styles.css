@@ -114,7 +114,7 @@ h1, h2, h3, .font-display {
   color: var(--warm);
   font-family: 'Permanent Marker', cursive;
   aspect-ratio: 1 / 1;
-  padding: 1.5rem;
+  padding: 0.75rem;
   clip-path: polygon(
     50% 0%, 61% 12%, 77% 6%, 80% 22%, 96% 25%, 90% 40%, 100% 50%,
     90% 60%, 96% 75%, 80% 78%, 77% 94%, 61% 88%, 50% 100%, 39% 88%,
@@ -161,8 +161,85 @@ h1, h2, h3, .font-display {
   outline-offset: 3px;
 }
 
+/* ---------- Order button modifiers ---------- */
+.btn-order--sm {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.25rem;
+  box-shadow: 4px 4px 0 var(--butter);
+}
+
+.btn-order--lg {
+  font-size: 2.25rem;
+  line-height: 1;
+  padding: 1.1rem 2.25rem;
+}
+
+.btn-order--block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .btn-order--lg { font-size: 3rem; padding: 1.25rem 3rem; }
+  .md\:btn-order--auto { display: inline-block; width: auto; }
+}
+
+/* ---------- Mobile fixed order bar ---------- */
+.order-bar {
+  background: var(--char);
+  border-top: 4px solid var(--blood);
+  padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom));
+}
+
+.btn-order--bar {
+  font-size: 1.75rem;
+  line-height: 1;
+  padding: 0.8rem 1rem;
+  box-shadow: 4px 4px 0 var(--butter);
+}
+
+/* ---------- Hero ---------- */
+.hero-title {
+  /* fills a phone screen, caps out on large displays */
+  font-size: clamp(5.5rem, 30vw, 14rem);
+  line-height: 0.85;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* Ticker (two identical spans, shifts by exactly one span for a seamless loop) */
+.ticker {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: ticker 22s linear infinite;
+}
+
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}
+
+/* CTA wiggle, plays briefly every few seconds to catch the eye */
+.wiggle {
+  animation: wiggle 4s ease-in-out infinite;
+}
+
+.wiggle:hover,
+.wiggle:focus-visible,
+.wiggle:active {
+  animation: none;
+}
+
+@keyframes wiggle {
+  0%, 85%, 100% { transform: rotate(0); }
+  88% { transform: rotate(-2deg) scale(1.03); }
+  92% { transform: rotate(2deg) scale(1.03); }
+  96% { transform: rotate(-1deg); }
+}
+
 /* ---------- Accessibility: respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn-order { transition: none; }
+  .ticker, .wiggle { animation: none; }
 }

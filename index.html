@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Say What!? | Southern Soul Food Pop-Up</title>
   <meta name="description" content="Say What!? Southern soul food, seasoned aggressively. Pop-up kitchen. Order online.">
   <meta name="theme-color" content="#0f0f0f">
@@ -38,11 +38,107 @@
   <!-- Custom utilities, font overrides, grunge effects -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-char text-warm font-body antialiased">
+<body class="bg-char text-warm font-body antialiased pb-24 md:pb-0">
 
-  <main>
-    <!-- Sections will be built out here -->
+  <!-- ===== DESKTOP / TABLET HEADER (sticky, always visible) ===== -->
+  <header class="hidden md:block sticky top-0 z-50 bg-char border-b-2 border-warm/20">
+    <div class="mx-auto max-w-6xl flex items-center justify-between px-6 py-3">
+      <a href="#top" class="font-display text-3xl leading-none text-warm" aria-label="Say What!? home">
+        SAY <span class="text-blood">WHAT!?</span>
+      </a>
+      <a href="https://square.link/u/REPLACE_ME" class="btn-order btn-order--sm" rel="noopener">
+        Order now
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero relative overflow-hidden grain section-dark min-h-[calc(100svh-6rem)] md:min-h-[calc(100svh-4.5rem)] flex flex-col">
+
+      <!-- Background photo: dark, desaturated, moody -->
+      <img
+        src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=60"
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+        class="absolute inset-0 h-full w-full object-cover opacity-30 grayscale contrast-125">
+      <div class="absolute inset-0 bg-gradient-to-b from-char/60 via-char/30 to-char" aria-hidden="true"></div>
+
+      <!-- Hero content -->
+      <div class="relative z-10 flex-1 flex flex-col justify-center mx-auto w-full max-w-6xl px-5 pt-8 pb-6 md:px-6">
+
+        <!-- Starburst badge -->
+        <div class="absolute right-3 top-3 md:right-6 md:top-8 w-28 md:w-40 tilt-right" aria-hidden="true">
+          <div class="starburst w-full text-[0.8rem] leading-[1.05] md:text-lg">
+            No lazy<br>cooking
+          </div>
+        </div>
+
+        <p class="stamp text-sm md:text-lg self-start mb-4">Pop-up kitchen</p>
+
+        <h1 class="hero-title text-warm">
+          <span class="block">Say</span>
+          <span class="block text-blood tilt-left-sm origin-left">What!?</span>
+        </h1>
+
+        <p class="font-marker text-2xl md:text-4xl text-butter mt-5 tilt-left-sm max-w-xl">
+          Southern soul food, <span class="underline-scribble">seasoned aggressively.</span>
+        </p>
+
+        <p class="mt-4 max-w-md text-lg md:text-xl text-warm/90 font-light leading-snug">
+          Slow-smoked. Deep-fried. Zero apologies. Order now, argue about it later.
+        </p>
+
+        <!-- Primary CTA -->
+        <div class="mt-8 flex flex-col items-start gap-3">
+          <a href="https://square.link/u/REPLACE_ME" class="btn-order btn-order--lg btn-order--block md:btn-order--auto wiggle" rel="noopener">
+            Order now
+          </a>
+          <p class="font-marker text-base md:text-lg text-warm/70">
+            &rarr; opens our Square page. we don't bite.
+          </p>
+        </div>
+      </div>
+
+      <!-- WHAT / WHEN / WHERE scribbles -->
+      <div class="relative z-10 mx-auto w-full max-w-6xl px-5 pb-8 md:px-6">
+        <ul class="grid grid-cols-1 md:grid-cols-3 border-t-2 border-warm/30">
+          <li class="py-3 md:py-5 md:pr-6 border-b-2 md:border-b-0 md:border-r-2 border-warm/30">
+            <span class="font-marker text-blood text-2xl">WHAT?</span>
+            <span class="block text-base leading-snug text-warm/90">Southern soul food, done loud.</span>
+          </li>
+          <li class="py-3 md:py-5 md:px-6 border-b-2 md:border-b-0 md:border-r-2 border-warm/30">
+            <span class="font-marker text-blood text-2xl">WHEN?</span>
+            <span class="block text-base leading-snug text-warm/90">Pop-up days only. Times are on the order page.</span>
+          </li>
+          <li class="py-3 md:py-5 md:pl-6">
+            <span class="font-marker text-blood text-2xl">WHERE?</span>
+            <span class="block text-base leading-snug text-warm/90">Pickup details live on the order page too.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Ticker -->
+      <div class="relative z-10 bg-blood text-char border-y-2 border-char overflow-hidden" aria-hidden="true">
+        <div class="ticker font-display text-xl md:text-2xl py-2">
+          <span>Fried chicken &#9733; Ribs &#9733; Mac &amp; cheese &#9733; Greens &#9733; Cornbread &#9733; No shortcuts &#9733;&nbsp;</span>
+          <span>Fried chicken &#9733; Ribs &#9733; Mac &amp; cheese &#9733; Greens &#9733; Cornbread &#9733; No shortcuts &#9733;&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- More sections go here -->
+
   </main>
+
+  <!-- ===== MOBILE ORDER BAR (fixed to bottom, always visible) ===== -->
+  <div class="order-bar md:hidden fixed inset-x-0 bottom-0 z-50">
+    <a href="https://square.link/u/REPLACE_ME" class="btn-order btn-order--block btn-order--bar" rel="noopener">
+      Order now
+    </a>
+  </div>
 
 </body>
 </html>
