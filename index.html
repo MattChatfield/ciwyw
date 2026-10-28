@@ -10,6 +10,7 @@
   <!-- Google Fonts: Anton (headlines), Permanent Marker (scribbles), Oswald (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS via CDN (temporary; swap for a build step later) -->
@@ -37,34 +38,91 @@
 
   <!-- Custom utilities, font overrides, grunge effects -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured data. Every REPLACE_ME value is a placeholder: swap in real venue details before launch. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Say What!?",
+    "description": "Southern soul food, seasoned aggressively. A pop-up kitchen serving slow-smoked, deep-fried, no-shortcuts food.",
+    "url": "https://REPLACE_ME.example/",
+    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=60",
+    "telephone": "REPLACE_ME",
+    "priceRange": "REPLACE_ME",
+    "servesCuisine": ["Southern", "Soul food", "American"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "REPLACE_ME",
+      "addressLocality": "REPLACE_ME",
+      "postalCode": "REPLACE_ME",
+      "addressCountry": "REPLACE_ME"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "REPLACE_ME",
+        "opens": "REPLACE_ME",
+        "closes": "REPLACE_ME"
+      }
+    ],
+    "menu": "https://square.link/u/REPLACE_ME",
+    "potentialAction": {
+      "@type": "OrderAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://square.link/u/REPLACE_ME",
+        "actionPlatform": [
+          "https://schema.org/DesktopWebPlatform",
+          "https://schema.org/MobileWebPlatform"
+        ]
+      }
+    }
+  }
+  </script>
 </head>
 <body class="bg-char text-warm font-body antialiased pb-24 md:pb-0">
 
   <!-- ===== DESKTOP / TABLET HEADER (sticky, always visible) ===== -->
   <header class="hidden md:block sticky top-0 z-50 bg-char border-b-2 border-warm/20">
-    <div class="mx-auto max-w-6xl flex items-center justify-between px-6 py-3">
-      <a href="#top" class="font-display text-3xl leading-none text-warm" aria-label="Say What!? home">
-        SAY <span class="text-blood">WHAT!?</span>
-      </a>
-      <a href="https://square.link/u/REPLACE_ME" class="btn-order btn-order--sm" rel="noopener">
-        Order now
-      </a>
-    </div>
+    <nav aria-label="Primary" class="mx-auto max-w-6xl px-6 py-3">
+      <ul class="flex items-center justify-between">
+        <li>
+          <a href="#top" class="font-display text-3xl leading-none text-warm" aria-label="Say What!? home">
+            SAY <span class="text-blood">WHAT!?</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://square.link/u/REPLACE_ME" class="btn-order btn-order--sm" rel="noopener">
+            Order now<span class="sr-only"> from Say What!? on Square</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </header>
 
   <main id="top">
 
     <!-- ===== HERO ===== -->
-    <section class="hero relative overflow-hidden grain section-dark min-h-[calc(100svh-6rem)] md:min-h-[calc(100svh-4.5rem)] flex flex-col">
+    <section aria-labelledby="hero-title" class="hero relative overflow-hidden grain section-dark min-h-[calc(100svh-6rem)] md:min-h-[calc(100svh-4.5rem)] flex flex-col">
 
       <!-- Background photo: dark, desaturated, moody -->
       <img
         src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=60"
-        alt=""
-        aria-hidden="true"
+        alt="A rack of slow-smoked ribs on a wooden board with barbecue sauce, cheesy fries, sliced tomatoes and pickles"
+        width="1200"
+        height="801"
         fetchpriority="high"
         class="absolute inset-0 h-full w-full object-cover opacity-30 grayscale contrast-125">
       <div class="absolute inset-0 bg-gradient-to-b from-char/60 via-char/30 to-char" aria-hidden="true"></div>
+
+      <!-- Scribbled stars: decorative, so empty alt on purpose -->
+      <img src="assets/star_top_left.svg" alt="" width="365" height="330"
+           class="pointer-events-none absolute -left-4 top-24 z-0 w-20 -rotate-12 opacity-90 md:left-8 md:top-16 md:w-32">
+      <img src="assets/star_middle_right.svg" alt="" width="390" height="380" loading="lazy"
+           class="pointer-events-none absolute -right-6 top-[52%] z-0 w-24 rotate-6 opacity-90 md:right-10 md:top-[45%] md:w-40">
+      <img src="assets/star_bottom_left.svg" alt="" width="380" height="430" loading="lazy"
+           class="pointer-events-none absolute -left-3 bottom-40 z-0 w-16 rotate-12 opacity-90 md:left-12 md:bottom-32 md:w-28">
 
       <!-- Hero content -->
       <div class="relative z-10 flex-1 flex flex-col justify-center mx-auto w-full max-w-6xl px-5 pt-8 pb-6 md:px-6">
@@ -76,11 +134,12 @@
           </div>
         </div>
 
-        <p class="stamp text-sm md:text-lg self-start mb-4">Pop-up kitchen</p>
+        <p class="stamp stamp-on-dark text-base md:text-lg self-start mb-4">Pop-up kitchen</p>
 
-        <h1 class="hero-title text-warm">
+        <h1 id="hero-title" class="hero-title text-warm">
           <span class="block">Say</span>
           <span class="block text-blood tilt-left-sm origin-left">What!?</span>
+          <span class="sr-only"> &ndash; Southern soul food pop-up</span>
         </h1>
 
         <p class="font-marker text-2xl md:text-4xl text-butter mt-5 tilt-left-sm max-w-xl">
@@ -94,7 +153,7 @@
         <!-- Primary CTA -->
         <div class="mt-8 flex flex-col items-start gap-3">
           <a href="https://square.link/u/REPLACE_ME" class="btn-order btn-order--lg btn-order--block md:btn-order--auto wiggle" rel="noopener">
-            Order now
+            Order now<span class="sr-only"> from Say What!? on Square</span>
           </a>
           <p class="font-marker text-base md:text-lg text-warm/70">
             &rarr; opens our Square page. we don't bite.
@@ -121,11 +180,32 @@
       </div>
 
       <!-- Ticker -->
-      <div class="relative z-10 bg-blood text-char border-y-2 border-char overflow-hidden" aria-hidden="true">
-        <div class="ticker font-display text-xl md:text-2xl py-2">
-          <span>Fried chicken &#9733; Ribs &#9733; Mac &amp; cheese &#9733; Greens &#9733; Cornbread &#9733; No shortcuts &#9733;&nbsp;</span>
-          <span>Fried chicken &#9733; Ribs &#9733; Mac &amp; cheese &#9733; Greens &#9733; Cornbread &#9733; No shortcuts &#9733;&nbsp;</span>
+      <div class="relative z-10 flex bg-blood text-char border-y-2 border-char">
+        <div class="flex-1 overflow-hidden">
+          <div class="ticker font-display text-xl md:text-2xl py-2" data-ticker>
+            <ul class="flex shrink-0" aria-label="On the menu">
+              <li>Fried chicken</li>
+              <li>Ribs</li>
+              <li>Mac &amp; cheese</li>
+              <li>Greens</li>
+              <li>Cornbread</li>
+              <li>No shortcuts</li>
+            </ul>
+            <!-- Duplicate set for the seamless loop; hidden from assistive tech -->
+            <ul class="flex shrink-0" aria-hidden="true">
+              <li>Fried chicken</li>
+              <li>Ribs</li>
+              <li>Mac &amp; cheese</li>
+              <li>Greens</li>
+              <li>Cornbread</li>
+              <li>No shortcuts</li>
+            </ul>
+          </div>
         </div>
+        <!-- WCAG 2.2.2: a way to pause anything that moves on its own -->
+        <button type="button" class="ticker-toggle" aria-pressed="false" aria-label="Pause the scrolling menu ticker" data-ticker-toggle>
+          <span aria-hidden="true">&#10074;&#10074;</span>
+        </button>
       </div>
     </section>
 
@@ -133,12 +213,51 @@
 
   </main>
 
+  <!-- ===== FOOTER (cream, so the page alternates dark / paper) ===== -->
+  <footer class="section-paper grain border-t-4 border-char">
+    <div class="relative z-10 mx-auto grid max-w-6xl gap-8 px-5 py-10 md:grid-cols-[3fr_2fr] md:px-6">
+      <div>
+        <p class="font-display text-5xl leading-none">Say What!?</p>
+        <p class="mt-3 font-marker text-xl">A lazy approach to cooking is not an option for us.</p>
+      </div>
+      <address class="not-italic border-t-2 border-char/30 pt-4 md:border-l-2 md:border-t-0 md:pl-6 md:pt-0">
+        <p class="font-marker text-2xl">Find us</p>
+        <ul class="mt-2 space-y-1 text-lg">
+          <li>[Venue name: REPLACE_ME]</li>
+          <li>[Street address: REPLACE_ME]</li>
+          <li>[Phone: REPLACE_ME]</li>
+          <li>[Email: REPLACE_ME]</li>
+        </ul>
+      </address>
+    </div>
+    <p class="relative z-10 border-t-2 border-char/30 px-5 py-3 text-center text-sm md:px-6">&copy; 2026 Say What!?</p>
+  </footer>
+
   <!-- ===== MOBILE ORDER BAR (fixed to bottom, always visible) ===== -->
-  <div class="order-bar md:hidden fixed inset-x-0 bottom-0 z-50">
-    <a href="https://square.link/u/REPLACE_ME" class="btn-order btn-order--block btn-order--bar" rel="noopener">
-      Order now
-    </a>
-  </div>
+  <nav aria-label="Quick order" class="order-bar md:hidden fixed inset-x-0 bottom-0 z-50">
+    <ul>
+      <li>
+        <a href="https://square.link/u/REPLACE_ME" class="btn-order btn-order--block btn-order--bar" rel="noopener">
+          Order now<span class="sr-only"> from Say What!? on Square</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <script>
+    // Ticker pause control (vanilla JS, no dependencies)
+    (function () {
+      var btn = document.querySelector('[data-ticker-toggle]');
+      var ticker = document.querySelector('[data-ticker]');
+      if (!btn || !ticker) return;
+      btn.addEventListener('click', function () {
+        var paused = btn.getAttribute('aria-pressed') !== 'true';
+        btn.setAttribute('aria-pressed', String(paused));
+        ticker.classList.toggle('is-paused', paused);
+        btn.firstElementChild.textContent = paused ? '\u25B6' : '\u275A\u275A';
+      });
+    })();
+  </script>
 
 </body>
 </html>

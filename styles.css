@@ -14,6 +14,15 @@
 /* ---------- Base / font overrides ---------- */
 html {
   scroll-behavior: smooth;
+  /* WCAG 2.2 Focus Not Obscured: keep focused items clear of the fixed bar / sticky header */
+  scroll-padding-bottom: 6.5rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-bottom: 0;
+    scroll-padding-top: 5rem;
+  }
 }
 
 body {
@@ -104,6 +113,11 @@ h1, h2, h3, .font-display {
   opacity: 0.92;
 }
 
+/* Red text on charcoal is only 4.3:1; yellow text keeps the red border and passes AA */
+.stamp-on-dark {
+  color: var(--butter);
+}
+
 /* ---------- Starburst badge ---------- */
 .starburst {
   display: inline-flex;
@@ -163,8 +177,9 @@ h1, h2, h3, .font-display {
 
 /* ---------- Order button modifiers ---------- */
 .btn-order--sm {
-  padding: 0.5rem 1.25rem;
-  font-size: 1.25rem;
+  padding: 0.4rem 1.25rem;
+  /* 24px+ counts as "large text" for WCAG, where cream on red (4.2:1) passes at 3:1 */
+  font-size: 1.5rem;
   box-shadow: 4px 4px 0 var(--butter);
 }
 
@@ -219,9 +234,34 @@ h1, h2, h3, .font-display {
   to { transform: translateX(-50%); }
 }
 
+.ticker.is-paused {
+  animation-play-state: paused;
+}
+
+/* Star separators; the second value is empty alt text so screen readers skip them */
+.ticker li {
+  white-space: nowrap;
+}
+
+.ticker li::after {
+  content: "\2605";
+  content: "\2605" / "";
+  margin: 0 1rem;
+}
+
+.ticker-toggle {
+  flex: none;
+  width: 2.75rem;
+  background: var(--char);
+  color: var(--butter);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
 /* CTA wiggle, plays briefly every few seconds to catch the eye */
 .wiggle {
-  animation: wiggle 4s ease-in-out infinite;
+  /* 3 short wiggles after a delay, then it stays still (WCAG 2.2.2) */
+  animation: wiggle 4s ease-in-out 1.5s 3;
 }
 
 .wiggle:hover,
@@ -242,4 +282,5 @@ h1, h2, h3, .font-display {
   html { scroll-behavior: auto; }
   .btn-order { transition: none; }
   .ticker, .wiggle { animation: none; }
+  .ticker-toggle { display: none; }
 }
