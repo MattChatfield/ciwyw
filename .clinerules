@@ -12,7 +12,7 @@ Always follow these design, typography, and architectural rules when generating 
 - Backgrounds: Use a high-contrast palette alternating between deep charcoal/matte black (#0f0f0f) and warm, aged paper/cream (#e8e2d5).
 - Accent Colors: Vibrant neon/blood red (#e62626) for highlights, scribbles, starburst badges, callout boxes, and price accents. Warm white/yellowish (#faf7f0 or #f4e883) for secondary emphasis.
 - Text Contrast: Heavy contrast—pure black text on cream sections, bold white and neon red text on black sections.
-- Structure: the aim is to appear hand-written, artisan, unfinished, even unintelligible at times. The website appears to be roughly made by the chef, but must remain legible and with obvious calls to action. 
+- Structure: the aim is to appear hand-written, artisan, unfinished, dirty, even unintelligible at times. The website appears to be roughly made by the chef, but must remain legible and with obvious calls to action. 
 
 ---
 
@@ -44,4 +44,17 @@ Always follow these design, typography, and architectural rules when generating 
 - Vanilla JavaScript / Alpine.js: Keep interactive elements (like sticky headers, reservation overlays, or menu category toggles) lightweight and zero-dependency.
 - Image Placeholders: Use dark-mode Unsplash URL placeholders related to "smokehouse food", "brisket", "craft cocktails", and "industrial restaurant interiors".
 
-Acknowledge these brand guidelines and apply them strictly across all HTML and CSS files generated for this workspace.
+---
+
+### 6. SEMANTIC HTML & ON-PAGE SEO
+
+Enforce strict document semantics and SEO standards on all HTML files:
+
+- Landmark Architecture: Use semantic HTML5 landmarks (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>`, `<footer>`) instead of generic `<div>` wrappers. Include exactly one `<main>` tag per page.
+- Heading Hierarchy: Maintain strict heading nesting (`<h1>` -> `<h2>` -> `<h3>`). Do not skip levels for visual sizing; handle visual presentation purely via CSS/Tailwind classes. Every page must have exactly one `<h1>`.
+- Lists & Addresses: Present menus, event schedules, and navigation using `<ul>`/`<ol>` and `<li>` elements. Wrap contact and location details in an `<address>` tag.
+- Media & Accessibility: Include descriptive `alt` attributes, explicit `width`/`height` dimensions, and `loading="lazy"` on all images below the fold. Avoid generic link text ("click here").
+- Structured Data: Include a valid `Restaurant` JSON-LD schema block (`<script type="application/ld+json">`) in the `<head>` of `index.html` detailing venue NAP, opening hours, price range, cuisine type, and menu link. Use obvious placeholders when this information is not known.
+- Follow WCAG 2.2 or better when it is possible to do so. This is an aspiration not a strict requirement.
+
+Acknowledge these brand guidelines and apply them across all HTML and CSS files generated for this workspace.
