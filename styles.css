@@ -277,10 +277,180 @@ h1, h2, h3, .font-display {
   96% { transform: rotate(-1deg); }
 }
 
+/* ---------- Extra colour: darker red for text on cream (#e62626 is only ~3.5:1 there) ---------- */
+.text-blood-ink {
+  color: #b01616;
+}
+
+/* ---------- Red callout section (cookout boxes) ---------- */
+/* Pure black on #e62626 is ~4.7:1, so body copy passes AA */
+.section-red {
+  background-color: var(--blood);
+  color: #000;
+}
+
+/* ---------- Heading levels below h3 share the display face ---------- */
+h4 {
+  font-family: 'Anton', Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+/* ---------- How-it-works step numerals ---------- */
+.step-no {
+  flex: none;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 4.5rem;
+  line-height: 0.9;
+  color: #b01616;
+  transform: rotate(-6deg);
+}
+
+/* ---------- Menu tiles (four equal poster cards) ---------- */
+.menu-tile {
+  position: relative;
+  padding: 1.25rem 1.25rem 1rem;
+  background-color: #171717;
+  border: 2px solid rgba(250, 247, 240, 0.35);
+  box-shadow: 6px 6px 0 var(--blood);
+}
+
+@media (min-width: 768px) {
+  .menu-tile { padding: 1.75rem 1.75rem 1.25rem; }
+}
+
+.menu-tile__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.25rem 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 3px solid var(--warm);
+}
+
+.tile-no {
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 3rem;
+  line-height: 0.85;
+  color: var(--blood);
+}
+
+.menu-tile__head h3 {
+  flex: 1 1 10rem;
+  color: var(--warm);
+}
+
+/* Taped-on label: char on butter gives strong contrast at small size */
+.tile-tag {
+  flex-basis: 100%;
+  align-self: flex-start;
+  width: max-content;
+  max-width: 100%;
+  padding: 0.1rem 0.6rem;
+  background: var(--butter);
+  color: var(--char);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+  transform: rotate(-1.5deg);
+}
+
+/* ---------- Dishes ---------- */
+.dish {
+  padding: 0.9rem 0;
+  border-top: 2px dashed rgba(250, 247, 240, 0.3);
+}
+
+.dish:first-child { border-top: 0; }
+
+.dish-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.15rem 1rem;
+}
+
+.dish-name {
+  font-size: 1.6rem;
+  color: var(--warm);
+}
+
+.dish-price {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: var(--butter);
+  transform: rotate(-2deg);
+}
+
+.dish-desc {
+  margin-top: 0.35rem;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: rgba(250, 247, 240, 0.9);
+}
+
+/* ---------- Ink stamp + ink button (for use on the red section) ---------- */
+.stamp-ink {
+  color: var(--char);
+  border-color: var(--char);
+  opacity: 1;
+}
+
+.btn-ink {
+  display: inline-block;
+  background: var(--char);
+  color: var(--warm);
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 1.75rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1rem 1.75rem;
+  border: 3px solid var(--char);
+  box-shadow: 6px 6px 0 var(--butter);
+  text-align: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-ink:hover,
+.btn-ink:focus-visible {
+  transform: translate(-2px, -2px) rotate(-1deg);
+  box-shadow: 9px 9px 0 var(--butter);
+}
+
+.btn-ink:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0 var(--butter);
+}
+
+/* Focus ring: butter on red is too weak, so use black on this section */
+.section-red :focus-visible {
+  outline-color: var(--char);
+}
+
+.btn-ink--block {
+  display: block;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .md\:btn-ink--auto { display: inline-block; width: auto; }
+}
+
+/* ---------- Crossed-out list (previous attempts) ---------- */
+.crossed {
+  text-decoration: line-through;
+  text-decoration-color: #b01616;
+  text-decoration-thickness: 4px;
+}
+
 /* ---------- Accessibility: respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn-order { transition: none; }
+  .btn-order, .btn-ink { transition: none; }
   .ticker, .wiggle { animation: none; }
   .ticker-toggle { display: none; }
 }
