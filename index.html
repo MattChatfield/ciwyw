@@ -291,42 +291,6 @@
         </ul>
       </div>
 
-      <!-- Ticker -->
-      <div class="relative z-10 flex bg-blood text-char border-y-2 border-char">
-        <div class="flex-1 overflow-hidden">
-          <div class="ticker font-display text-xl md:text-2xl py-2" data-ticker>
-            <ul class="flex shrink-0" aria-label="On the menu">
-              <li>Ribs</li>
-              <li>Fried chicken</li>
-              <li>Fried fish</li>
-              <li>Burgers</li>
-              <li>Dogs</li>
-              <li>Short rib</li>
-              <li>Herbivore</li>
-              <li>Fries</li>
-              <li>Rice</li>
-              <li>Mash</li>
-            </ul>
-            <!-- Duplicate set for the seamless loop; hidden from assistive tech -->
-            <ul class="flex shrink-0" aria-hidden="true">
-              <li>Ribs</li>
-              <li>Fried chicken</li>
-              <li>Fried fish</li>
-              <li>Burgers</li>
-              <li>Dogs</li>
-              <li>Short rib</li>
-              <li>Herbivore</li>
-              <li>Fries</li>
-              <li>Rice</li>
-              <li>Mash</li>
-            </ul>
-          </div>
-        </div>
-        <!-- WCAG 2.2.2: a way to pause anything that moves on its own -->
-        <button type="button" class="ticker-toggle" aria-pressed="false" aria-label="Pause the scrolling menu ticker" data-ticker-toggle>
-          <span aria-hidden="true">&#10074;&#10074;</span>
-        </button>
-      </div>
     </section>
 
     <!-- ===== TAKEOUTS (cream) ===== -->
@@ -514,21 +478,6 @@
       </li>
     </ul>
   </nav>
-
-  <script>
-    // Ticker pause control (vanilla JS, no dependencies)
-    (function () {
-      var btn = document.querySelector('[data-ticker-toggle]');
-      var ticker = document.querySelector('[data-ticker]');
-      if (!btn || !ticker) return;
-      btn.addEventListener('click', function () {
-        var paused = btn.getAttribute('aria-pressed') !== 'true';
-        btn.setAttribute('aria-pressed', String(paused));
-        ticker.classList.toggle('is-paused', paused);
-        btn.firstElementChild.textContent = paused ? '\u25B6' : '\u275A\u275A';
-      });
-    })();
-  </script>
 
 </body>
 </html>

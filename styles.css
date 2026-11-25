@@ -222,42 +222,6 @@ h1, h2, h3, .font-display {
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
 }
 
-/* Ticker (two identical spans, shifts by exactly one span for a seamless loop) */
-.ticker {
-  display: flex;
-  width: max-content;
-  white-space: nowrap;
-  animation: ticker 22s linear infinite;
-}
-
-@keyframes ticker {
-  to { transform: translateX(-50%); }
-}
-
-.ticker.is-paused {
-  animation-play-state: paused;
-}
-
-/* Star separators; the second value is empty alt text so screen readers skip them */
-.ticker li {
-  white-space: nowrap;
-}
-
-.ticker li::after {
-  content: "\2605";
-  content: "\2605" / "";
-  margin: 0 1rem;
-}
-
-.ticker-toggle {
-  flex: none;
-  width: 2.75rem;
-  background: var(--char);
-  color: var(--butter);
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
 /* CTA wiggle, plays briefly every few seconds to catch the eye */
 .wiggle {
   /* 3 short wiggles after a delay, then it stays still (WCAG 2.2.2) */
@@ -451,6 +415,5 @@ h4 {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn-order, .btn-ink { transition: none; }
-  .ticker, .wiggle { animation: none; }
-  .ticker-toggle { display: none; }
+  .wiggle { animation: none; }
 }
